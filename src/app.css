@@ -4,6 +4,13 @@ body{
     align-items: center;
     justify-content: center;
 }
+
+.container{
+    width: 50vh;
+    border-radius: 5px;
+    border: .5px solid lightseagreen;
+}
+
 .login{
     height: 50vh;
     display: flex;
@@ -26,4 +33,12 @@ button{
     border: none;
     border-radius: 5px;
     cursor: pointer;
+}
+
+.username{
+    font-weight: bold;
+    color: lightseagreen;
+    position: absolute;
+    top: 15px;
+    right: 20px;
 }

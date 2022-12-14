@@ -1,4 +1,4 @@
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import Navbar from "./components/navbar/Navbar";
 import Card from "./components/card/Card";
 import posts from "./data";
@@ -9,21 +9,25 @@ import "./app.css";
 function App() {
   const [username, setUsername] = useState("");
   const [user, setUser] = useState("");
+  const [socket, setSocket] = useState(null);
 
   useEffect(() => {
-    const socket = io("http://localhost:5000"{ autoConnect: false });
-
+    setSocket(io("http://localhost:5000"));    
   }, []);
 
+  useEffect(() => {
+    socket.emit("newUser",user);
+
+  }, [user,socket])
   
 
   return (
     <div className="container">
-      {user ? (
+      {true ? (
         <>
-          <Navbar/>
+          <Navbar socket={socket}/>
           {posts.map((post) => (
-            <Card key={post.id} post={post} user={user}/>
+            <Card key={post.id} post={post} user={user} socket={socket}/>
           ))}
           <span className="username">{user}</span>
         </>

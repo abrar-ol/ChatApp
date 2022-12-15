@@ -12,18 +12,17 @@ function App() {
   const [socket, setSocket] = useState(null);
 
   useEffect(() => {
-    setSocket(io("http://localhost:5000"));    
+    setSocket(io("http://localhost:5000"));   
   }, []);
 
   useEffect(() => {
-    socket.emit("newUser",user);
+    socket?.emit("newUser",user);
 
   }, [user,socket])
   
-
   return (
     <div className="container">
-      {true ? (
+      {user ? (
         <>
           <Navbar socket={socket}/>
           {posts.map((post) => (
